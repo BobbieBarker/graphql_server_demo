@@ -5,6 +5,7 @@ defmodule GraphqlServerDemoWeb.Schema.Mutations.User do
 
   object :user_mutations do
     field :update_user, :user do
+      middleware GraphqlServerDemoWeb.Middleware.IdToIntegerConverter
       arg :id, non_null(:id)
       arg :name, :string
       arg :email, :string
@@ -12,6 +13,7 @@ defmodule GraphqlServerDemoWeb.Schema.Mutations.User do
     end
 
     field :update_user_preferences, :preferences do
+      middleware GraphqlServerDemoWeb.Middleware.IdToIntegerConverter
       arg :user_id, non_null(:id)
       arg :likes_emails, :boolean
       arg :likes_phone_calls, :boolean
