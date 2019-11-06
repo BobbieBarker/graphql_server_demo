@@ -11,7 +11,8 @@ config :graphql_server_demo, GraphqlServerDemo.Repo,
   database: "postgres",
   username: "postgres",
   password: "postgres",
-  hostname: "localhost"
+  hostname: "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox
 
 config :graphql_server_demo,
   ecto_repos: [GraphqlServerDemo.Repo]

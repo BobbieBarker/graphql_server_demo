@@ -20,9 +20,20 @@ config :graphql_server_demo, GraphqlServerDemo.Repo,
   ```
 Once that is done you'll be able to finish setting up the project and start the server with these commands:
 
-* mix deps.get
-* mix ecto.create
-* mix ecto.migrate
-* iex -S mix phx.server
+* `mix deps.get`
+* `mix ecto.create`
+* `mix ecto.migrate`
+* `iex -S mix phx.server`
 
-At this point you should be able to navigate to `http://localhost:4000/graphiql` and explore the graphiql sandbox.
+You should now be able to navigate to `http://localhost:4000/graphiql` and explore the graphiql sandbox.
+
+## Running the tests
+
+You'll need to setup a second database and update the `config/test.exs` config file.
+Once you have the test database configuration setup you should run the migrations against it with this command:
+
+`MIX_ENV=test mix ecto.migrate`
+
+The tests can then be ran with:
+
+`mix test`

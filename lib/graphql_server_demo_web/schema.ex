@@ -8,8 +8,12 @@ defmodule GraphqlServerDemoWeb.Schema do
   import_types Schema.Mutations.User
   import_types Schema.Subscriptions.User
 
+  import_types Schema.Queries.ActivityMonitor
+
+
   query do
     import_fields :user_queries
+    import_fields :activity_monitor_queries
   end
 
   mutation do

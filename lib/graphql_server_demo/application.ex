@@ -11,6 +11,7 @@ defmodule GraphqlServerDemo.Application do
       # Start the endpoint when the application starts
       GraphqlServerDemoWeb.Endpoint,
       GraphqlServerDemo.Repo,
+      GraphqlServerDemo.ActivityMonitor.Agent,
       {Absinthe.Subscription, [GraphqlServerDemoWeb.Endpoint]}
       # Starts a worker by calling: GraphqlServerDemo.Worker.start_link(arg)
       # {GraphqlServerDemo.Worker, arg},

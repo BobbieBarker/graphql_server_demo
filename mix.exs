@@ -9,7 +9,10 @@ defmodule GraphqlServerDemo.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        test: :test
+      ]
     ]
   end
 
@@ -27,9 +30,6 @@ defmodule GraphqlServerDemo.MixProject do
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
 
-  # Specifies your project dependencies.
-  #
-  # Type `mix help deps` for examples and options.
   defp deps do
     [
       {:phoenix, "~> 1.4.9"},
@@ -43,7 +43,8 @@ defmodule GraphqlServerDemo.MixProject do
       {:ecto_sql, "~> 3.2"},
       {:postgrex, "~> 0.15.1"},
       {:dataloader, "~> 1.0"},
-      {:ecto_shorts, "~> 0.1.5"}
+      {:ecto_shorts, "~> 0.1.5"},
+      {:mix_test_watch, "~> 0.8", only: :dev, runtime: false}
     ]
   end
 end
