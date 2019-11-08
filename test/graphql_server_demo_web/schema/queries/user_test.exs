@@ -45,7 +45,7 @@ defmodule GraphqlServerDemoWeb.Schema.Queries.UserTest do
       }
     }
   """
-
+  # WIP move all of the setup/helper functions to their own modules
   defp setup_all_users _context do
     {:ok, user1} = Accounts.create_user(%{
       name: "great name",

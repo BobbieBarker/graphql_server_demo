@@ -1,4 +1,4 @@
-defmodule GraphqlServerDemo.ActivityMonitor.Utility do
+defmodule GraphqlServerDemo.ActivityMonitor.Impl do
   @moduledoc """
     Implements the business logic of updating and fetching
     the state for our ActivityMonitor.Agent
@@ -10,10 +10,10 @@ defmodule GraphqlServerDemo.ActivityMonitor.Utility do
 
     ## Example
 
-      iex> GraphqlServerDemo.ActivityMonitor.Utility.update(%{"foo" => 0}, "foo")
+      iex> GraphqlServerDemo.ActivityMonitor.Impl.update(%{"foo" => 0}, "foo")
       %{"foo" => 1}
 
-      iex> GraphqlServerDemo.ActivityMonitor.Utility.update(%{"foo" => 0}, "bar")
+      iex> GraphqlServerDemo.ActivityMonitor.Impl.update(%{"foo" => 0}, "bar")
       %{"foo" => 0}
   """
   def update(state, key) do
@@ -28,10 +28,10 @@ defmodule GraphqlServerDemo.ActivityMonitor.Utility do
     Returns {:ok, key_value} if the target key exists in the state map.
     If not :error is returned
 
-    iex> GraphqlServerDemo.ActivityMonitor.Utility.fetch(%{"foo" => 0}, "foo")
+    iex> GraphqlServerDemo.ActivityMonitor.Impl.fetch(%{"foo" => 0}, "foo")
     {:ok, 0}
 
-    iex> GraphqlServerDemo.ActivityMonitor.Utility.fetch(%{"foo" => 0}, "bar")
+    iex> GraphqlServerDemo.ActivityMonitor.Impl.fetch(%{"foo" => 0}, "bar")
     :error
   """
   def fetch(state, key) do
