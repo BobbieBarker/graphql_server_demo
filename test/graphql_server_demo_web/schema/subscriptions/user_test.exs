@@ -1,6 +1,6 @@
 defmodule GraphqlServerDemoWeb.Schema.Subscriptions.UserTest do
 
-  use GraphqlServerDemoWeb.SubscriptionCase
+  use GraphqlServerDemoWeb.Support.SubscriptionCase
 
   alias GraphqlServerDemo.Accounts
 

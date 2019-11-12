@@ -1,19 +1,11 @@
 defmodule GraphqlServerDemoWeb.Schema.Mutations.UserTest do
-  use GraphqlServerDemoWeb.DataCase, async: true
+  use GraphqlServerDemoWeb.Support.DataCase, async: true
 
   alias GraphqlServerDemoWeb.Schema
   alias GraphqlServerDemo.Accounts
   alias GraphqlServerDemo.Repo
 
-  defp setup_user _context do
-    {:ok, user} = Accounts.create_user(%{
-      name: "great name",
-      email: "email@email.com",
-      preferences: %{likes_emails: true, likes_phone_calls: true}
-    })
-
-    {:ok, %{user: user}}
-  end
+  import GraphqlServerDemoWeb.Support.Fixtures.User, only: [setup_user: 1]
 
     @create_user"""
       mutation createUser(

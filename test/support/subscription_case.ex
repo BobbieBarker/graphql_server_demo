@@ -1,4 +1,4 @@
-defmodule GraphqlServerDemoWeb.SubscriptionCase do
+defmodule GraphqlServerDemoWeb.Support.SubscriptionCase do
 
   @moduledoc"""
     Test case for GraphQL subscription
@@ -8,8 +8,8 @@ defmodule GraphqlServerDemoWeb.SubscriptionCase do
 
   using do
     quote do
-      use GraphqlServerDemoWeb.DataCase, async: true
-      use GraphqlServerDemoWeb.ChannelCase
+      use GraphqlServerDemoWeb.Support.DataCase, async: true
+      use GraphqlServerDemoWeb.Support.ChannelCase
 
       use Absinthe.Phoenix.SubscriptionTest,
         schema: GraphqlServerDemoWeb.Schema

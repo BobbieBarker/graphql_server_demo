@@ -1,8 +1,10 @@
 defmodule GraphqlServerDemoWeb.Schema.Queries.UserTest do
-  use GraphqlServerDemoWeb.DataCase, async: true
+  use GraphqlServerDemoWeb.Support.DataCase, async: false
 
   alias GraphqlServerDemoWeb.Schema
   alias GraphqlServerDemo.Accounts
+
+  import GraphqlServerDemoWeb.Support.Fixtures.User, only: [setup_users: 1]
 
   @all_users_doc"""
     query allUsers(
@@ -45,25 +47,9 @@ defmodule GraphqlServerDemoWeb.Schema.Queries.UserTest do
       }
     }
   """
-  # WIP move all of the setup/helper functions to their own modules
-  defp setup_all_users _context do
-    {:ok, user1} = Accounts.create_user(%{
-      name: "great name",
-      email: "email@email.com",
-      preferences: %{likes_emails: true, likes_phone_calls: true}
-    })
-
-    {:ok, user2} = Accounts.create_user(%{
-      name: "greater name",
-      email: "email2@email.com",
-      preferences: %{likes_emails: false, likes_phone_calls: false}
-    })
-    {:ok, %{user1: user1, user2: user2}}
-  end
-
 
   describe "@users" do
-    setup [:setup_all_users]
+    setup [:setup_users]
 
     test "fetches all the users", %{user1: user1, user2: user2} do
       assert {:ok, %{data: data}} = Absinthe.run(
@@ -139,7 +125,7 @@ defmodule GraphqlServerDemoWeb.Schema.Queries.UserTest do
   end
 
   describe "@user" do
-    setup [:setup_all_users]
+    setup [:setup_users]
 
     test "finds a user by id", %{user1: user1} do
       assert {:ok, %{data: data}} = Absinthe.run(

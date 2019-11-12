@@ -1,6 +1,7 @@
 defmodule GraphqlServerDemo.ActivityMonitor.AgentTest do
   use ExUnit.Case, async: true
   alias GraphqlServerDemo.ActivityMonitor.Agent, as: ActivityMonitor
+  alias GraphqlServerDemo.ActivityMonitor.ResolverActivity
 
   setup do
     {:ok, pid} = ActivityMonitor.start_link([name: nil])
@@ -14,7 +15,7 @@ defmodule GraphqlServerDemo.ActivityMonitor.AgentTest do
     end
 
     test "returns an error for an invalid key", %{pid: pid} do
-      assert :error = ActivityMonitor.fetch_resolver_activity(pid, "derps")
+      assert :error = ActivityMonitor.fetch_resolver_activity(pid, "no_exist")
     end
   end
 
@@ -29,12 +30,12 @@ defmodule GraphqlServerDemo.ActivityMonitor.AgentTest do
       assert :ok = ActivityMonitor.update_resolver_activity(pid, "derp")
 
       assert %{
-        "all" => 0,
-        "create_user" => 0,
         "find" => 0,
         "update" => 0,
-        "update_user_preferences" => 0
-      } = ActivityMonitor.get_all_activity(pid)
+        "all" => 0,
+        "update_user_preferences" => 0,
+        "create_user" => 0,
+      } = :sys.get_state(pid)
     end
   end
 end

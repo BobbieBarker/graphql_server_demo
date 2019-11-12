@@ -1,4 +1,4 @@
-defmodule GraphqlServerDemoWeb.DataCase do
+defmodule GraphqlServerDemoWeb.Support.DataCase do
   use ExUnit.CaseTemplate
 
   using do
@@ -8,7 +8,7 @@ defmodule GraphqlServerDemoWeb.DataCase do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import GraphqlServerDemoWeb.DataCase
+      import GraphqlServerDemoWeb.Support.DataCase
     end
   end
 

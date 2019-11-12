@@ -1,5 +1,5 @@
 defmodule GraphqlServerDemo.AccountsTests do
-  use GraphqlServerDemoWeb.DataCase, async: true
+  use GraphqlServerDemoWeb.Support.DataCase, async: true
 
   alias GraphqlServerDemo.Accounts
   alias GraphqlServerDemo.Repo

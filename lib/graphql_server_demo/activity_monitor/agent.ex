@@ -1,12 +1,15 @@
 defmodule GraphqlServerDemo.ActivityMonitor.Agent do
   use Agent
   alias GraphqlServerDemo.ActivityMonitor.Impl
+  alias GraphqlServerDemo.ActivityMonitor.ResolverActivity
   @default_name ActivityMonitorAgent
+
   @moduledoc """
     Monitors the activity of specified graphql resolvers
   """
 
   def start_link(opts \\ []) do
+
     initial_state = %{
       "find" => 0,
       "update" => 0,
@@ -28,9 +31,5 @@ defmodule GraphqlServerDemo.ActivityMonitor.Agent do
   @spec fetch_resolver_activity(atom | pid | {atom, any} | {:via, atom, any}, any) :: any
   def fetch_resolver_activity(name \\ @default_name, key) do
     Agent.get(name, fn state -> Impl.fetch(state, key) end)
-  end
-
-  def get_all_activity(name \\ @default_name) do
-    Agent.get(name, fn state -> state end)
   end
 end

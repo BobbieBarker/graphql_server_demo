@@ -1,5 +1,5 @@
 defmodule GraphqlServerDemoWeb.Schema.Queries.ActivityMonitorTest do
-  use GraphqlServerDemoWeb.DataCase, async: true
+  use GraphqlServerDemoWeb.Support.DataCase, async: true
 
   alias GraphqlServerDemoWeb.Schema
 
