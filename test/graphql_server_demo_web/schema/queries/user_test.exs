@@ -2,7 +2,6 @@ defmodule GraphqlServerDemoWeb.Schema.Queries.UserTest do
   use GraphqlServerDemoWeb.Support.DataCase, async: false
 
   alias GraphqlServerDemoWeb.Schema
-  alias GraphqlServerDemo.Accounts
 
   import GraphqlServerDemoWeb.Support.Fixtures.User, only: [setup_users: 1]
 
@@ -52,6 +51,7 @@ defmodule GraphqlServerDemoWeb.Schema.Queries.UserTest do
     setup [:setup_users]
 
     test "fetches all the users", %{user1: user1, user2: user2} do
+      # WIP write support function that reduces this Absinthe.run boilerplate
       assert {:ok, %{data: data}} = Absinthe.run(
         @all_users_doc,
         Schema,

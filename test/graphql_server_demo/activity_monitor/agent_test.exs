@@ -1,7 +1,7 @@
 defmodule GraphqlServerDemo.ActivityMonitor.AgentTest do
   use ExUnit.Case, async: true
   alias GraphqlServerDemo.ActivityMonitor.Agent, as: ActivityMonitor
-  alias GraphqlServerDemo.ActivityMonitor.ResolverActivity
+
 
   setup do
     {:ok, pid} = ActivityMonitor.start_link([name: nil])

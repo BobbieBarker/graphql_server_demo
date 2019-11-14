@@ -1,7 +1,6 @@
 defmodule GraphqlServerDemo.ActivityMonitor.Agent do
   use Agent
   alias GraphqlServerDemo.ActivityMonitor.Impl
-  alias GraphqlServerDemo.ActivityMonitor.ResolverActivity
   @default_name ActivityMonitorAgent
 
   @moduledoc """
